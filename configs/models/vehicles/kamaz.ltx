@@ -1,0 +1,277 @@
+;-------------------------------------------------------------------------------
+;----- KAMAZ 5320 --------------------------------------------------------------
+;-------------------------------------------------------------------------------
+
+[car_definition]
+
+camera_pos			= -0.7, 2.6, 2.9	;смещение камеры в кабине влево-вправо, вверх-вниз, вперед-назад
+
+camera_pos_firsteye			= -0.7, 2.5, 3.0
+camera_pos_lookat		= 0.0, 3.9, -2.0
+camera_pos_free			= 0.0, 4.0, -4.2
+
+driving_wheels			= back_left_wheel,back_right_wheel,back_left_wheel2,back_right_wheel2, front_left_wheel,front_right_wheel
+steering_wheels			= front_left_wheel,front_right_wheel
+breaking_wheels			= back_left_wheel,back_right_wheel,back_left_wheel2,back_right_wheel2,front_left_wheel,front_right_wheel
+doors				= left_door,right_door				
+steer				= stearing_wheel			
+driver_place			= seat_left                
+exhausts			= exhausts						
+exhaust_particles		= vehiclefx\exhaust_1
+trunk_bone				= back_door
+
+damage				= damage_bones
+
+;-------------------------------------------------------------------------------
+;------ Factory parameters of Engine -------------------------------------------
+
+fuel_tank			= 200		; L
+fuel_consumption		= 20		; L / (100k R); liters per 100 000 rotations
+engine_power			= 45		; horse_power (kW=hp*0.808) max power
+max_power_rpm			= 4000		; (nominal rpm ) on this rpm value engine power reaches maximum
+max_torque_rpm			= 3500		; on this rpm engine torque reaches maximum
+ph_mass                 = 30
+
+power_increment_factor		= 0.7
+power_decrement_factor		= 0.9
+rpm_increment_factor		= 0.5
+rpm_decrement_factor		= 0.2
+m_power_neutral_factor		= 1
+
+; additional engine parameters
+
+max_engine_rpm			= 4500		; rpm (5000) rpm will never be more
+idling_engine_rpm		= 600		; rpm (750) min rpm - starts from this rpm value
+limiter_engine_rpm      = 0            ;[NET Online] multiper for RPM
+
+;-------------------------------------------------------------------------------
+;------ Adjustment a wheel -----------------------------------------------------
+
+reference_radius		= 0.45		
+axle_friction			= 0.0001	
+steering_speed			= 0.7
+steering_torque			= 1000000
+break_torque			= 0.07
+break_time			= 1.0
+hand_break_torque		= 0.065
+
+;-------------------------------------------------------------------------------
+;------ Gearbox ----------------------------------------------------------------
+
+main_gear_ratio			= 14.6
+auto_transmission		= off
+
+[transmission_gear_ratio]
+R				= 3.17, 1500,3500,2000
+N1				= 4.42, 1500,3500,2000
+N2				= 3.10, 1500,3500,2000
+N3				= 2.15, 1500,3500,2000
+N4				= 1.32, 1500,3500,2000
+N5              = 0.89, 1500,3500,2000
+
+;-------------------------------------------------------------------------------
+;------ Rest Adjustment --------------------------------------------------------
+
+[lights]
+headlights			= f1,f2,f3,f4,f5
+
+[f1]
+bone				= left_light
+color				= 1.0,1.0,1.0,1.0
+range				= 65
+cone_angle			= 60
+spot_texture    = internal\internal_light_torch_r2	
+glow_texture			= glow\glow_Orange_bright
+glow_radius			= 2.5
+
+[f2]
+bone				= right_light
+color				= 1.0,1.0,1.0,1.0
+range				= 65
+cone_angle			= 60
+spot_texture    = internal\internal_light_torch_r2	
+glow_texture			= glow\glow_Orange_bright
+glow_radius			= 2.5
+
+[f3]
+bone				= up_light
+color				= 1.0,1.0,1.0,1.0
+range				= 25
+cone_angle			= 15
+spot_texture    = internal\internal_light_torch_r2	
+glow_texture			= glow\glow_Orange_bright
+glow_radius			= 2.5
+
+[f4]
+bone               		= back_left_light
+color              		= 0.25,0,0,0.1
+range              		= 2.1
+cone_angle         		= 60
+spot_texture       		= internal\internal_light_torch_r2
+glow_texture       		= glow\glow_torch_r2
+glow_radius        		= 1.5
+
+[f5]
+bone               		= back_right_light
+color              		= 0.25,0,0,0.1
+range              		= 2.1
+cone_angle         		= 60
+spot_texture       		= internal\internal_light_torch_r2
+glow_texture       		= glow\glow_torch_r2
+glow_radius        		= 1.5
+
+[car_sound]
+snd_volume         		= 1.0
+snd_name           		= car\veh_kamaz\engine_run
+engine_sound_start_dellay	= 0.5
+engine_start			= car\veh_kamaz\engine_start
+engine_stop				= car\veh_kamaz\engine_stop
+transmission_switch		= car\veh_kamaz\gearchange
+explosion_sound    		= weapons\heli_explosion
+relative_pos       		= 0.0,0.5,0.5
+
+;-------------------------------------------------------------------------------
+;------ damage params ----------------------------------------------------------
+
+[damage_particles]
+
+explosion_particles		= explosions\expl_mushroom_01
+car_damage_particles1		= explosions\expl_car_smoke_small
+car_damage_particles2		= explosions\expl_car_smoke_big
+wheels_damage_particles1	= vehiclefx\exhaust_1
+wheels_damage_particles2	= vehiclefx\exhaust_1
+
+particle_bones1			= kabina
+particle_bones2			= kabina
+
+;-------------------------------------------------------------------------------
+;------ particle bones ---------------------------------------------------------
+
+[particle_bones]
+kabina				=  1.3, -0.5,-1
+
+;-------------------------------------------------------------------------------
+;------ damage items -----------------------------------------------------------
+
+[damage_items]
+back_left_wheel			= 5000
+back_right_wheel		= 5000
+front_left_wheel		= 5000
+front_right_wheel		= 5000
+back_left_wheel2		= 5000
+back_right_wheel2		= 5000
+left_door			= 3000
+right_door			= 3000
+
+;-------------------------------------------------------------------------------
+;------ collisiondamage --------------------------------------------------------
+
+[collision_damage]
+
+;-------------------------------------------------------------------------------
+;------ damage bones -----------------------------------------------------------
+
+[damage_bones]
+
+;Дефолтный множитель если кости нет в списке
+default				= 0.5, -1, 0.01
+
+;Урон при попадание в бензобаки
+fuel_left 			= 10,  -1, 5
+fuel_right 			= 10,  -1, 5
+
+;Урон при попадание по бортовому прицепу
+trailer 			= 0.01, -1, 0.01
+trailer_beams 		= 0.01, -1, 0.01
+tent				= 0, 	-1, 0.01
+
+;Урон при попадание по шасси автомобиля
+chassis				= 0.8, -1, 0.01
+back_axle			= 0.8, -1, 0.01
+back_axle2			= 0.8, -1, 0.01
+front_axle			= 0.8, -1, 0.01
+
+;Урон при попадание в кабину
+kabina		= 3,   -1, 0.01
+left_door 	= 0.1, -1, 0.01
+right_door	= 0.1, -1, 0.01
+seat_left 	= 3,   -1, 0.01
+seat_right	= 3,   -1, 0.01
+
+[immunities]
+burn_immunity         	= 0.05
+strike_immunity       	= 0.001
+shock_immunity        	= 0.0
+wound_immunity        	= 0.0
+radiation_immunity    	= 0.0
+telepatic_immunity    	= 0.0
+chemical_burn_immunity 	= 0.0
+explosion_immunity    	= 0.5
+fire_wound_immunity   	= 0.03
+
+;-------------------------------------------------------------------------------
+;----------------explosion params-----------------------------------------------
+
+[explosion]
+blast				= 20
+blast_r				= 5
+blast_impulse			= 500
+frags				= 15
+frags_r				= 30
+frag_hit			= 0.5
+frag_hit_impulse		= 350
+hit_type_blast			= explosion
+hit_type_frag			= fire_wound
+up_throw_factor			= 0.25
+wm_size				= 0.1
+explode_particles		= explosions\expl_vehichels
+light_color			= 0.6,0.5,0.3
+light_range			= 15.0
+light_time			= 0.5
+fragment_speed			= 76
+fragment_tracer_max_length	= 3
+explode_duration		= 50
+snd_explode			= weapons\heli_explosion
+wallmark_section		= explosion_marks
+
+[explode_effector]
+effect_sect_name = effector_explode_hit
+
+;-------------------------------------------------------------------------------
+;------ Others params ----------------------------------------------------------
+
+[autoremove_parts]
+time				= 60
+
+[air_resistance]
+linear_factor			= 500.f		;
+angular_factor			= 500.f		;
+
+;-------------------------------------------------------------------------------
+;--- car dashboard -------------------------------------------------------------
+
+; [dashboard]
+; rpm_bone = rpm_strelka
+; rpm_angle = 5.0, -200.0 ;[NET Online] min_angle, rpm_multiplay
+; speed_bone = speed_strelka
+; speed_angle = 17.0, -7.75 ;[NET Online] min_angle, speed_multiplay
+
+;-------------------------------------------------------------------------------
+;--- car driver anim -----------------------------------------------------------
+
+; [car_anims]
+; idle_anim = kamaz5320_kamaz_idle_legs 		;Анимация бездействия ног
+; body_anim = kamaz5320_kamaz_idle_torso 		;Анимация бездействия тела
+; gas_anim = kamaz5320_kamaz_gas 		;Анимация нажатия педали газа
+; brake_anim = kamaz5320_kamaz_brake 	;Анимация нажатия педали тормоза(+сцепления)
+; left_anim = kamaz5320_kamaz_rotation 			;Анимация поворота руля влево
+; right_anim = kamaz5320_kamaz_rotation		 	;Анимация поворота руля вправо
+; gear_up_anim = kamaz5320_kamaz_idle_torso 		;Анимация повышения передачи
+; gear_down_anim = kamaz5320_kamaz_idle_torso 	;Анимация понижения передачи
+; pas_anim = vaz2121_niva_idle_passenger		;Анимация пассажира
+; turn_start_anim = kamaz5320_kamaz_turn_engine_start	;Анимация старта зажигания
+; turn_idle_anim = kamaz5320_kamaz_turn_engine_idle 		;Анимация ожидания зажигания
+; turn_end_anim = kamaz5320_kamaz_turn_engine_end 		;Анимация окончания зажигания
+
+;-------------------------------------------------------------------------------
+;------ End params -------------------------------------------------------------
